@@ -1,7 +1,7 @@
 import axios from "axios";
-import { TOKEN, REPO_OWNER, REPO_NAME } from "./config.js";
+import { TOKEN, REPO_OWNER, REPO_NAME } from "./config/config.js";
 import { Students } from "./data/studentsData.js";
-import { BOT_TOKEN, TEAM_ID } from "./config/slack";
+import { BOT_TOKEN, TEAM_ID } from "./config/slack.js";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { WebClient, LogLevel } = require("@slack/web-api");
