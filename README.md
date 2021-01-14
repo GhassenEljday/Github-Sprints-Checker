@@ -2,7 +2,7 @@
 
 
 This project created to check who didn't create a pull request in a
-certain repo to send a warning in a private message in slack using `Mafia BOY` bot in slack.
+certain repo to send a warning in a private message in slack using `Mafia BOY` bot.
 
 
 ##  How to use?
