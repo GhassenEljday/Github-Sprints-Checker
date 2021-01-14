@@ -1,8 +1,9 @@
-// Students data:
+// Students info:
 const Students = [
   {
     githubUsername: "student_userName",
-    email: "student_email",
+    display_name: "student_slackName",
+    studentId: "user_id",
   },
 ];
 
