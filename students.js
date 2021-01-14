@@ -1,13 +1,13 @@
 import axios from "axios";
-import { token, repoOwner, repoName } from "./config.js";
+import { TOKEN, REPO_OWNER, REPO_NAME } from "./config.js";
 import { Students } from "./data/studentsData.js";
-import { botToken, team_id } from "./slackConfig.js";
+import { BOT_TOKEN, TEAM_ID } from "./config/slack";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { WebClient, LogLevel } = require("@slack/web-api");
 
 const bot = new WebClient({
-  token: `token ${botToken}`,
+  token: `token ${BOT_TOKEN}`,
   logLevel: LogLevel.DEBUG,
 });
 
@@ -15,10 +15,10 @@ const bot = new WebClient({
 const getStudents = async () => {
   try {
     const getStudentsData = await axios.get(
-      `https://api.github.com/repos/${repoOwner}/${repoName}/pulls?state=all`,
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls?state=all`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${TOKEN}`,
         },
       }
     );
@@ -33,9 +33,9 @@ const getStudents = async () => {
       if (!users.includes(student.githubUsername)) {
         try {
           const result = await bot.chat.postMessage({
-            token: `${botToken}`,
+            token: `${BOT_TOKEN}`,
             channel: `${student.studentId}`,
-            text: `Hey @${student.display_name} please create pull request for ${repoName} repo`,
+            text: `Hey @${student.display_name} please create pull request for ${REPO_NAME} repo`,
           });
           console.log(result);
         } catch (error) {
