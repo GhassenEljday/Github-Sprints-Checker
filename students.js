@@ -19,7 +19,7 @@ const getStudents = async () => {
       {
         headers: {
           Authorization: `Bearer ${TOKEN}`,
-        },
+        }, 
       }
     );
     const studentsWithPullRequestLogin = allPullRequestsData.data.map(
