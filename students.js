@@ -1,6 +1,6 @@
 import axios from "axios";
 import { TOKEN, REPO_OWNER, REPO_NAME } from "./config/config.js";
-import { Students } from "./data/studentsData.js";
+import { students } from "./data/studentsData.js";
 import { BOT_TOKEN, TEAM_ID } from "./config/slack.js";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -14,7 +14,7 @@ const bot = new WebClient({
 // Get all the students that made the pull request.
 const getStudents = async () => {
   try {
-    const getStudentsData = await axios.get(
+    const allPullRequestsData = await axios.get(
       `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls?state=all`,
       {
         headers: {
@@ -22,27 +22,22 @@ const getStudents = async () => {
         },
       }
     );
-    var users = [];
-    for (let i = 0; i < getStudentsData.data.length; i++) {
-      var user = getStudentsData.data[i].user.login;
-      users.push(user);
-    }
-
-    for (let j = 0; j < Students.length; j++) {
-      var student = Students[j];
-      if (!users.includes(student.githubUsername)) {
-        try {
-          const result = await bot.chat.postMessage({
-            token: `${BOT_TOKEN}`,
-            channel: `${student.studentId}`,
-            text: `Hey @${student.display_name} please create pull request for ${REPO_NAME} repo`,
-          });
-          console.log(result);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    }
+    const studentsWithPullRequestLogin = allPullRequestsData.data.map(
+      (pullRequest) => pullRequest.user.login
+    );
+    const studentsWithoutPullRequest = students.filter(
+      (student) =>
+        !studentsWithPullRequestLogin.includes(student.githubUsername)
+    );
+    Promise.all(
+      studentsWithoutPullRequest.map((student) =>
+        bot.chat.postMessage({
+          token: `${BOT_TOKEN}`,
+          channel: `${student.studentId}`,
+          text: `Hey @${student.display_name} please create pull request for ${REPO_NAME} repo`,
+        })
+      )
+    );
   } catch (error) {
     console.error(error);
   }
