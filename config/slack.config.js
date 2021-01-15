@@ -1,4 +1,4 @@
 var BOT_TOKEN = "YOUR_BOT_TOKEN";
 var TEAM_ID = "YOUR_TEAM_ID";
 
-export { BOT_TOKEN, TEAM_ID };
+export { BOT_TOKEN, TEAM_ID }; 
