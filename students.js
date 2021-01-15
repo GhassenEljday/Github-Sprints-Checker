@@ -34,7 +34,7 @@ const getStudents = async () => {
         bot.chat.postMessage({
           token: `${BOT_TOKEN}`,
           channel: `${student.studentId}`,
-          text: `Hey @${student.display_name} please create pull request for ${REPO_NAME} repo`,
+          text: `Hey @${student.display_name} please don't forget to create a pull request for ${REPO_NAME} repo`,
         })
       )
     );
