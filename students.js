@@ -8,7 +8,7 @@ const { WebClient, LogLevel } = require("@slack/web-api");
 
 const bot = new WebClient({
   token: `token ${BOT_TOKEN}`,
-  logLevel: LogLevel.DEBUG,
+  logLevel: LogLevel.DEBUG
 });
 
 // Get all the students that made the pull request.
@@ -18,8 +18,8 @@ const getStudents = async () => {
       `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls?state=all`,
       {
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
-        }, 
+          Authorization: `Bearer ${TOKEN}`
+        }
       }
     );
     const studentsWithPullRequestLogin = allPullRequestsData.data.map(
@@ -29,18 +29,22 @@ const getStudents = async () => {
       (student) =>
         !studentsWithPullRequestLogin.includes(student.githubUsername)
     );
-    Promise.all(
-      studentsWithoutPullRequest.map((student) =>
-        bot.chat.postMessage({
+    studentsWithoutPullRequest.map(async (student) => {
+      try {
+        const result = await bot.chat.postMessage({
           token: `${BOT_TOKEN}`,
           channel: `${student.studentId}`,
-          text: `Hey @${student.display_name} please don't forget to create a pull request for ${REPO_NAME} repo`,
-        })
-      )
-    );
+          text: `Hey @${student.display_name} please don't forget to create a pull request for ${REPO_NAME} repo`
+        });
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
+    });
   } catch (error) {
     console.error(error);
   }
 };
+
 
 getStudents();
