@@ -1,5 +1,5 @@
 // Students info:
-const Students = [
+const students = [
   {
     githubUsername: "student_userName",
     display_name: "student_slackName",

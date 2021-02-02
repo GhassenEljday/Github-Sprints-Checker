@@ -1,0 +1,42 @@
+[
+  {
+    "question": "i can't create a pull request",
+    "answer": "to create a pull request make sure that you have already forked the repo"
+  },
+  {
+    "question": "i have a problem in creating pull request",
+    "answer": "to create a pull request make sure that you have already forked the repo"
+  },
+  {
+    "question": "i can not create a pull request",
+    "answer": "to create a pull request make sure that you have already forked the repo"
+  },
+  {
+    "question": "unable to create a pull request",
+    "answer": "to create a pull request make sure that you have already forked the repo"
+  },
+  {
+    "question": "it doesn't accept my pull request",
+    "answer": "to create a pull request make sure that you have already forked the repo"
+  },
+  {
+    "question": "i can't fork the repo",
+    "answer": "ask your HIR about that"
+  },
+  {
+    "question": "fork is not working",
+    "answer": "ask your HIR about that"
+  },
+  {
+    "question": "i have no access to the repo",
+    "answer": "ask your HIR about that"
+  },
+  {
+    "question": "the repo is 404 error",
+    "answer": "ask your HIR about that"
+  },
+  {
+    "question": "i don't have the repo link",
+    "answer": "ask your HIR about that"
+  }
+]
