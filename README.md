@@ -15,7 +15,7 @@ If you don't know how to create a Slack Bot you can check this link: [Create a b
 ##  How to use?
 
 
-* Step one:  
+* First step:  
 
 ```sh
 Fill the configs files and the data files.
@@ -23,14 +23,14 @@ Fill the configs files and the data files.
 You can check the example files.
 
 
-* Step two:
+* Second Step:
 
 ```sh
 npm install
 ```
 
 
-* Step thre:
+* Third Step:
 
  ```sh
 npm start 
