@@ -22,16 +22,19 @@ Fill the configs files and the data files.
 ```
 You can check the example files.
 
+
 * Step two:
 
 ```sh
 npm install
 ```
 
+
 * Step thre:
 
  ```sh
 npm start 
 ```
+
 
 ## Have Fun 😊
