@@ -1,7 +1,7 @@
 # Github-Sprints-Checker
 
 
-I've built this project just cus I'm lazy and I don't wanna keep checking students one by one, so I made a function that will contact the Github API looking for a result which is an Object that contains all the students who made a pull request then all I do is just checking with the data that I have saved before about the student (it's contains there information like slack_Id, GitHub username, and his real name), after checking this function will take all the students who didin't made a pull request and send them a privet message in Slack using a bot that you can just add it to your workspace and give it the following permissions : 
+I've built this project just cus I'm lazy and I don't wanna keep checking students one by one, so I made a function that will contact the Github API looking for a result which is an Object that contains all the students who made a pull request then all I do is just checking with the data that I have saved before about the student (it's contains there information like slack_Id, GitHub username, and his real name), after checking this function will take all the students who didin't made a pull request and send them a privet message in Slack using a bot that you can just add it to your workspace and give it the following permissions: 
 
 `chat:write`
 `chat:write.customize`
